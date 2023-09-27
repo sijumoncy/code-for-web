@@ -7,6 +7,7 @@ function Ide() {
   const [javascript, setJavascript] = useState("");
   const [srcDoc, setSrcDoc] = useState("");
 
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       setSrcDoc(`
@@ -24,20 +25,30 @@ function Ide() {
   return (
     <div className="w-screen h-screen">
       <div className="h-[50vh] flex bg-black/10 gap-2">
-        <div className="flex-1">
-          <Editor language="xml" title="HTML" code={html} setCode={setHtml} />
+      <Editor language="xml" title="HTML" code={html} setCode={setHtml} />
+      <Editor language="css" title="CSS" code={css} setCode={setCss} />
+      <Editor
+            language="javascript"
+            title="JS"
+            code={javascript}
+            setCode={setJavascript}
+            
+          />
+        {/* <div className={`${open === 'xml' ? "flex-grow-0" : "flex-1"}`}>
+          <Editor language="xml" title="HTML" code={html} setCode={setHtml} setOpen={setOpen}/>
         </div>
-        <div className="flex-1">
-          <Editor language="css" title="CSS" code={css} setCode={setCss} />
+        <div className={`${open === 'css' ? "flex-grow-0" : "flex-1"}`}>
+          <Editor language="css" title="CSS" code={css} setCode={setCss} setOpen={setOpen}/>
         </div>
-        <div className="flex-1">
+        <div className={`${open === 'javascript' ? "flex-grow-0" : "flex-1"}`}>
           <Editor
             language="javascript"
             title="JS"
             code={javascript}
             setCode={setJavascript}
+            setOpen={setOpen}
           />
-        </div>
+        </div> */}
       </div>
       <div className="h-[50vh] flex">
         <iframe

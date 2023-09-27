@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Controlled as CodeMirror } from "react-codemirror2";
 
 import "codemirror/lib/codemirror.css";
@@ -16,16 +16,21 @@ interface EditorProps {
   setCode: React.Dispatch<React.SetStateAction<string>>;
 }
 
+
+
 function Editor({ title, language, code, setCode }: EditorProps) {
+
+  const [open, setOpen] = useState(true);
+
   const handleEditorChange = (editor, data, value: string) => {
     setCode(value);
   };
 
   return (
-    <div className="w-full">
-      <div className="flex justify-between p-2 pl-4 rounded-t-lg bg-black/40 mt-1">
+    <div className={`${open ? 'flex-1' : 'flex-grow-0'}`}>
+      <div className="flex justify-between p-2 pl-4 rounded-t-lg bg-black/40 mt-1 gap-5">
         <span>{title}</span>
-        <button>0</button>
+        <button onClick={() => setOpen(prev => !prev)}>0</button>
       </div>
         <CodeMirror
           onBeforeChange={handleEditorChange}
