@@ -17,7 +17,6 @@ interface EditorProps {
 }
 
 
-
 function Editor({ title, language, code, setCode }: EditorProps) {
 
   const [open, setOpen] = useState(true);

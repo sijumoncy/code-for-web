@@ -1,26 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Editor from "../Editor/Editor";
+import { useGenerateSrcDoc } from "../../hooks/useGenerateSrcDoc";
 
 function Ide() {
   const [html, setHtml] = useState("");
   const [css, setCss] = useState("");
   const [javascript, setJavascript] = useState("");
-  const [srcDoc, setSrcDoc] = useState("");
 
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setSrcDoc(`
-        <html>
-          <body>${html}</body>
-          <style>${css}</style>
-          <script>${javascript}</script>
-        </html>
-      `);
-    }, 250);
-
-    return () => clearTimeout(timeout);
-  }, [html, css, javascript]);
+  const srcDoc = useGenerateSrcDoc(
+    {html, css, javascript}, 
+    250
+  )
 
   return (
     <div className="w-screen h-screen">
@@ -28,27 +18,11 @@ function Ide() {
       <Editor language="xml" title="HTML" code={html} setCode={setHtml} />
       <Editor language="css" title="CSS" code={css} setCode={setCss} />
       <Editor
-            language="javascript"
-            title="JS"
-            code={javascript}
-            setCode={setJavascript}
-            
-          />
-        {/* <div className={`${open === 'xml' ? "flex-grow-0" : "flex-1"}`}>
-          <Editor language="xml" title="HTML" code={html} setCode={setHtml} setOpen={setOpen}/>
-        </div>
-        <div className={`${open === 'css' ? "flex-grow-0" : "flex-1"}`}>
-          <Editor language="css" title="CSS" code={css} setCode={setCss} setOpen={setOpen}/>
-        </div>
-        <div className={`${open === 'javascript' ? "flex-grow-0" : "flex-1"}`}>
-          <Editor
-            language="javascript"
-            title="JS"
-            code={javascript}
-            setCode={setJavascript}
-            setOpen={setOpen}
-          />
-        </div> */}
+        language="javascript"
+        title="JS"
+        code={javascript}
+        setCode={setJavascript}
+      />
       </div>
       <div className="h-[50vh] flex">
         <iframe
