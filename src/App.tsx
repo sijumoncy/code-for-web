@@ -1,7 +1,9 @@
+import Ide from "./components/Ide/Ide";
+
 function App() {
   return (
     <>
-      <div className="text-red-500">hi</div>
+      <Ide/>
     </>
   );
 }
