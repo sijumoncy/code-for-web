@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Editor from "../Editor/Editor";
 import { useGenerateSrcDoc } from "../../hooks/useGenerateSrcDoc";
 

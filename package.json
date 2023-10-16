@@ -1,4 +1,5 @@
 {
+  "homepage": "https://sijumoncy.github.io/code-for-web",
   "name": "code-for-web",
   "private": true,
   "version": "0.0.0",
@@ -6,12 +7,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "predeploy":"tsc && vite build",
+    "deploy":"gh-pages -d build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
     "codemirror": "^5.65.3",
-    "gh-pages": "^6.0.0",
     "react": "^18.2.0",
     "react-codemirror2": "^7.2.1",
     "react-dom": "^18.2.0"
@@ -23,6 +25,7 @@
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.3",
     "autoprefixer": "^10.4.16",
+    "gh-pages": "^6.0.0",
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",

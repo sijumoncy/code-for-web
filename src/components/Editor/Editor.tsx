@@ -21,7 +21,8 @@ function Editor({ title, language, code, setCode }: EditorProps) {
 
   const [open, setOpen] = useState(true);
 
-  const handleEditorChange = (editor, data, value: string) => {
+  const handleEditorChange = (editor:unknown, data:unknown, value: string) => {
+    console.log(editor, data);
     setCode(value);
   };
 
